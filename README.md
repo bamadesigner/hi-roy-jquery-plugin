@@ -1,5 +1,18 @@
 # Hi Roy
 
+No day is complete without saying hi Roy. If worrying about whether you've greeted Roy keeps you up at night, introducing the "Hi Roy" jQuery plugin to kick all your worries to the curb.
+
+By simply placing this plugin on your website, you can be constantly reminded of the importance of the (Hi Roy Club)[http://hiroy.club/].
+
+## To Get Started
+
+Place the JS and CSS file on your site:
+
+```
+<link rel="stylesheet" href="hi-roy-styles.css" type="text/css" media="all" />
+<script type="text/javascript" src="hi-roy-min.js"></script>
+```
+
 ```
 // Place an element in your HTML
 <div id="hi-roy"></div>
@@ -15,7 +28,7 @@ var $hi_roy = $('#hi-roy').hiRoy();
 // The default options:
 *startPosition: Will pull a random position to place Roy at the start ('top', 'right', 'bottom', 'left').
 *image: Is the relative path to the cutout of Roy's head. You can place a different path if you'd like to use a different image.
-*link: Defines the link used when you click on Roy's head. By default, is a Twitter web intent to tweet "Hi Roy".
+*link: Defines the link used when you click on Roy's head. By default, it's a Twitter web intent to tweet "Hi Roy".
 *onMove: If true, will move Roy's head when the user's mouse moves. Set true to disable this so you can move Roy on your own terms.
 
 // To change the options:
