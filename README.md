@@ -2,7 +2,7 @@
 
 No day is complete without saying hi Roy. If worrying about whether you've greeted Roy keeps you up at night, introducing the "Hi Roy" jQuery plugin to kick all your worries to the curb.
 
-By simply placing this plugin on your website, you can be constantly reminded of the importance of the (Hi Roy Club)[http://hiroy.club/].
+By simply placing this plugin on your website, you can be constantly reminded of the importance of the [Hi Roy Club](http://hiroy.club/).
 
 ## To Get Started
 
