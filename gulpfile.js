@@ -4,7 +4,7 @@ var minify = require('gulp-minify');
 var watch = require('gulp-watch');
 
 gulp.task('sass', function() {
-	gulp.src('styles.scss')
+	gulp.src('hi-roy-styles.scss')
 		.pipe(sass({outputStyle:'compressed'}))
 		.pipe(gulp.dest(''));
 });
@@ -16,6 +16,6 @@ gulp.task('compress', function() {
 });
 
 gulp.task('default', ['sass','compress'], function() {
-	gulp.watch(['styles.scss'],['sass']);
+	gulp.watch(['hi-roy-styles.scss'],['sass']);
 	gulp.watch(['hi-roy.js'],['compress']);
 });
