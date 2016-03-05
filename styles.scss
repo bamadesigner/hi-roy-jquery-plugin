@@ -1,0 +1,82 @@
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+// Will set prefix values
+@mixin set-prefix( $prefix, $value ) {
+    -webkit-#{$prefix}: $value;
+    -moz-#{$prefix}: $value;
+    -ms-#{$prefix}: $value;
+    -o-#{$prefix}: $value;
+    #{$prefix}: $value;
+}
+
+#hi-roy {
+    position: absolute;
+
+    img {
+        max-width: none;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        @include set-prefix( 'transform', translate(-50%,0) );
+    }
+
+    &.top {
+        top: 0;
+        right: auto;
+        bottom: auto;
+        left: 0;
+        width: 100%;
+        height: auto;
+
+        img {
+            @include set-prefix( 'transform', rotate(180deg) translate(50%, 0) );
+        }
+
+    }
+
+    &.right {
+        top: 0;
+        right: 0;
+        bottom: auto;
+        left: auto;
+        width: auto;
+        height: 100%;
+
+        img {
+            top: 50%;
+            left: 0;
+            transform-origin: left top;
+            @include set-prefix( 'transform', rotate(-90deg) translate(-50%, 0) );
+        }
+
+    }
+
+    &.bottom {
+        top: auto;
+        right: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    &.left {
+        top: 0;
+        right: auto;
+        bottom: auto;
+        left: 0;
+        width: auto;
+        height: 100%;
+
+        img {
+            top: 50%;
+            left: auto;
+            right: 0;
+            transform-origin: right top;
+            @include set-prefix( 'transform', rotate(90deg) translate(50%, 0) );
+        }
+
+    }
+
+}
