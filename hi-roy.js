@@ -29,7 +29,7 @@
 
 		// What are our default options?
 		var $defaults = {
-			position: get_random_position(), // Which side position do we start with
+			startPosition: get_random_position(), // Which side position do we start with
 			image: 'roy-head.png', // Allows you to replace the image
 			link: 'https://twitter.com/intent/tweet?text=Hi+@royboy789.+http%3A%2F%2Fhiroy.club%2F&hashtags=hiroy',
 			onMove: true
@@ -38,9 +38,9 @@
 		// Mesh with the passed options
 		$hi_roy.options = $.extend({},$defaults,$options);
 
-		// Set the position
-		$hi_roy_position = $hi_roy.options.position;
-		delete $hi_roy.options.position;
+		// Set the start position
+		$hi_roy_position = $hi_roy.options.startPosition;
+		delete $hi_roy.options.startPosition;
 
 		// Create and store our new Hi Roy element
 		$hi_roy.element = $('<div id="hi-roy"></div>').addClass($hi_roy_position).hide();

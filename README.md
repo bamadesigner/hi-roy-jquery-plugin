@@ -12,15 +12,15 @@ var $hi_roy = $('#hi-roy').hiRoy();
 
 ```
 // You can also tweak a few options
-// The default poptions:
-*position: Will pull a random position to place Roy at the start ('top', 'right', 'bottom', 'left').
+// The default options:
+*startPosition: Will pull a random position to place Roy at the start ('top', 'right', 'bottom', 'left').
 *image: Is the relative path to the cutout of Roy's head. You can place a different path if you'd like to use a different image.
 *link: Defines the link used when you click on Roy's head. By default, is a Twitter web intent to tweet "Hi Roy".
 *onMove: If true, will move Roy's head when the user's mouse moves. Set true to disable this so you can move Roy on your own terms.
 
 // To change the options:
 var $hi_roy = $('#hi-roy').hiRoy({
-    position: 'top', // Do this if you always want Roy to start at the top
+    startPosition: 'top', // Do this if you always want Roy to start at the top
     onMove: false // Disable Roy moving when the mouse moves
 });
 ```
