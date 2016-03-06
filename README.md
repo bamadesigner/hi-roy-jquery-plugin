@@ -12,7 +12,7 @@ Take the following files from the repo and add them to your site:
 
 * hi-roy-min.js
 * hi-roy-styles.css
-* roy-head.png file *You can use your own image instead of Roy's head. See options below.*
+* roy-head.png file - *(You can use your own image instead of Roy's head. [See options below](https://github.com/bamadesigner/hi-roy#how-to-use-your-own-image))*
 
 Add the following to the <head> section of your site. Hi Roy is a jQuery plugin so you will need to make sure you include jQuery. For this example, I'm pulling from the official jQuery CDN.
 
