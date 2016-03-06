@@ -30,6 +30,7 @@
 			startPosition: get_random_position(), // Which side position do we start with
 			image: 'roy-head.png', // Allows you to replace the image
 			link: 'https://twitter.com/intent/tweet?text=Hi+@royboy789.+http%3A%2F%2Fhiroy.club%2F&hashtags=hiroy',
+			link_target: '_blank',
 			onMove: true
 		};
 
@@ -43,8 +44,13 @@
 		// Create and store our new Hi Roy element
 		$hi_roy.element = $('<div id="hi-roy"></div>').addClass($hi_roy_position).hide();
 
-		// Create the link and <img>
+		// Create the link
 		var $hi_roy_element_link = $('<a href="' + $hi_roy.options.link + '"></a>');
+		if ( $hi_roy.options.link_target !== undefined && $hi_roy.options.link_target != '' ) {
+			$hi_roy_element_link.attr( 'target', $hi_roy.options.link_target );
+		}
+
+		// Create the image
 		var $hi_roy_element_img = $('<img src="' + $hi_roy.options.image + '" />');
 
 		// Add all the elements together

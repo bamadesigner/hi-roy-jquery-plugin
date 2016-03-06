@@ -8,7 +8,7 @@ By simply placing this plugin on your website, you too can ensure your membershi
 
 ## Getting Started
 
-Hi Roy is a simple jQuery plugin that, by default, places Roy on your website and makes him move from side to side when you move your mouse. If you happen to catch Roy, you can click his head greet him on this beautiful day.
+Hi Roy is a simple jQuery plugin that, by default, places Roy on your website and makes him move from side to side when you move your mouse. If you happen to catch Roy, you can click his head to greet him on this beautiful day.
 
 You can also customize the plugin to modify Roy's behavior.
 
@@ -18,7 +18,7 @@ Take the following files from the repo and add them to your site:
 * hi-roy-styles.css
 * roy-head.png file - *(You can use your own image instead of Roy's head. [See options below](https://github.com/bamadesigner/hi-roy#how-to-use-your-own-image))*
 
-Add the following to the <head> section of your site. Hi Roy is a jQuery plugin so you will need to make sure you include jQuery. For this example, I'm pulling from the official jQuery CDN.
+Add the following to the `<head>` of your site. Hi Roy is a jQuery plugin so you will need to make sure you include jQuery. For this example, I'm pulling from the official jQuery CDN.
 
 ```
 <link rel="stylesheet" href="hi-roy-styles.css" type="text/css" media="all" />
@@ -37,10 +37,11 @@ var $hi_roy = $('body').hiRoy();
 You can customize Roy by tweaking a few options:
 
 **The default options:**
-*startPosition: Will pull a random position to place Roy at the start ('top', 'right', 'bottom', 'left').
-*image: Is the relative path to the cutout of Roy's head. You can place a different path if you'd like to use a different image.
-*link: Defines the link used when you click on Roy's head. By default, it's a Twitter web intent to tweet "Hi Roy".
-*onMove: If true, will move Roy's head when the user's mouse moves. Set true to disable this so you can move Roy on your own terms.
+* startPosition: Will pull a random position to place Roy at the start ('top', 'right', 'bottom', 'left').
+* image: Is the relative path to the cutout of Roy's head. You can place a different path if you'd like to use a different image.
+* link: Defines the link used when you click on Roy's head. By default, it's a Twitter web intent to tweet "Hi Roy".
+* link_target: Defines the target for the link. The default is '_blank', to open in a new window.
+* onMove: If true, will move Roy's head when the user's mouse moves. Set true to disable this so you can move Roy on your own terms.
 
 ### How To Customize Roy
 
