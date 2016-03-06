@@ -14,13 +14,8 @@ Place the JS and CSS file on your site:
 ```
 
 ```
-// Place an element in your HTML
-<div id="hi-roy"></div>
-```
-
-```
 // Initiate Roy in JS
-var $hi_roy = $('#hi-roy').hiRoy();
+var $hi_roy = $(document).hiRoy();
 ```
 
 ```
@@ -32,7 +27,7 @@ var $hi_roy = $('#hi-roy').hiRoy();
 *onMove: If true, will move Roy's head when the user's mouse moves. Set true to disable this so you can move Roy on your own terms.
 
 // To change the options:
-var $hi_roy = $('#hi-roy').hiRoy({
+var $hi_roy = $(document).hiRoy({
     startPosition: 'top', // Do this if you always want Roy to start at the top
     onMove: false // Disable Roy moving when the mouse moves
 });

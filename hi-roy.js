@@ -75,8 +75,8 @@
 				$hi_roy.element.css( 'width', $hi_roy.height );
 			}
 
-			// Replace the passed element with our new element
-			$element.replaceWith($hi_roy.element);
+			// Add our element to the body
+			$('body').append($hi_roy.element);
 
 			// Set animation settings to move Roy in
 			var $move_roy_in_animate = {};
