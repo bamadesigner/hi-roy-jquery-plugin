@@ -31,7 +31,7 @@
 			image: 'roy-head.png', // Allows you to replace the image
 			link: 'https://twitter.com/intent/tweet?text=Hi+@royboy789.+http%3A%2F%2Fhiroy.club%2F&hashtags=hiroy',
 			link_target: '_blank',
-			onMove: true
+			moveOnMove: true
 		};
 
 		// Mesh with the passed options
@@ -80,14 +80,14 @@
 			// Move Roy in
 			$hi_roy.moveIn($hi_roy_position,function() {
 
-				// Move Roy cutout when the screen is touched or when the mouse moves
-				if ( $hi_roy.options.onMove ) {
-					$(window).on('touchstart mousemove',function($event) {
-						$hi_roy.move();
-					});
-				}
 
 			});
+					// Move Roy cutout when the screen is touched or when the mouse moves
+					if ($hi_roy.options.moveOnMove) {
+						$(window).on('touchstart mousemove', function ($event) {
+							$hi_roy.move();
+						});
+					}
 
 		});
 

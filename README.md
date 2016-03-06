@@ -41,14 +41,14 @@ You can customize Roy by tweaking a few options:
 * image: Is the relative path to the cutout of Roy's head. You can place a different path if you'd like to use a different image.
 * link: Defines the link used when you click on Roy's head. By default, it's a Twitter web intent to tweet "Hi Roy".
 * link_target: Defines the target for the link. The default is '_blank', to open in a new window.
-* onMove: If true, will move Roy's head when the user's mouse moves. Set true to disable this so you can move Roy on your own terms.
+* moveOnMove: If true, will move Roy's head when the user's mouse moves. Set true to disable this so you can move Roy on your own terms.
 
 ### How To Customize Roy
 
 ```
 var $hi_roy = $('body').hiRoy({
     startPosition: 'top', // Do this if you always want Roy to start at the top
-    onMove: false // Disable Roy moving when the mouse moves
+    moveOnMove: false // Disable Roy moving when the mouse moves
 });
 ```
 
@@ -68,7 +68,7 @@ document.body.addEventListener('hiRoyAfterMoveIn', function($event){
 
     // Roy's positions are passed to the event via $event.detail
 
-    // If you have "onMove" set to false, you can use this listener to make Roy move every 5 seconds
+    // If you have "moveOnMove" set to false, you can use this listener to make Roy move every 5 seconds
     setTimeout(function(){ $hi_roy.move(); }, 5000);
 
 });
