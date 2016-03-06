@@ -21,9 +21,6 @@
 	// Let's get ready to say hi
 	function hiRoy($element,$options) {
 
-		// Hide the element for now
-		$element.hide();
-
 		// Hi Roy
 		var $hi_roy = this;
 
