@@ -12,6 +12,7 @@
 	var $hi_roy_sides = ['top','right','bottom','left'];
 	var $hi_roy_position = '';
 	var $hi_roy_disabled = false;
+	var $hi_roy_move_disabled = false;
 
 	// Get random position
 	function get_random_position() {
@@ -108,6 +109,11 @@
 	}
 	$.extend(hiRoy.prototype,{
 
+		// Get the current position
+		get_position: function() {
+			return $hi_roy_position;
+		},
+
 		// Disable Roy
 		disable: function() {
 			$hi_roy_disabled = true;
@@ -118,9 +124,6 @@
 			$hi_roy_disabled = false;
 		},
 
-		// Get the current position
-		get_position: function() {
-			return $hi_roy_position;
 		},
 
 		// Move Roy
@@ -130,12 +133,12 @@
 			var $hi_roy = this;
 
 			// Don't move if disabled
-			if ( $hi_roy_disabled ) {
+			if ( $hi_roy_move_disabled ) {
 				return false;
 			}
 
 			// Disable while we work
-			$hi_roy.disable();
+			$hi_roy_move_disabled = true;
 
 			// Make sure we have a valid next position
 			if ( $next_position === undefined || $.inArray( $next_position, $hi_roy_sides ) == -1 ) {
@@ -193,8 +196,8 @@
 				// Move Roy back in
 				$hi_roy.element.animate( $animate2, 800, function() {
 
-					// Enable cutout
-					$hi_roy.enable();
+					// Enable move
+					$hi_roy_move_disabled = false;
 
 					// Change current position
 					$hi_roy_position = $hi_roy.nextPosition;
