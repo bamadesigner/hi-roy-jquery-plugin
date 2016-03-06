@@ -87,19 +87,7 @@
 			$move_roy_in_animate[$hi_roy_position] = 0;
 
 			// Move Roy in
-			$hi_roy.element.show().animate( $move_roy_in_animate, 800, function() {
-
-				// Set the next position
-				$hi_roy.nextPosition = get_random_position();
-
-				// Trigger our move in event, pass position information
-				var $hiRoyAfterMoveIn = new CustomEvent( 'hiRoyAfterMoveIn', {
-					detail: {
-						currentPosition: $hi_roy_position,
-						nextPosition: $hi_roy.nextPosition
-					}
-				});
-				document.body.dispatchEvent($hiRoyAfterMoveIn);
+			$hi_roy.moveIn(function() {
 
 				// Move Roy cutout when the screen is touched or when the mouse moves
 				if ( $hi_roy.options.onMove ) {
@@ -146,6 +134,62 @@
 			this.disable();
 		},
 
+		// Move Roy in
+		moveIn: function(callback) {
+
+			// Hi Roy
+			var $hi_roy = this;
+
+			// Set new background position
+			// A whole number between 10 and 90
+			var $new_cutout_pos = Math.floor( Math.random() * ( ( 90 - 10 ) + 1 ) + 10 );
+			switch( $hi_roy.nextPosition ) {
+				case 'left':
+				case 'right':
+					$hi_roy.element.css( 'width', $hi_roy.height );
+					$hi_roy.element.find('img').css({ 'top': $new_cutout_pos + '%' });
+					break;
+				case 'top':
+				case 'bottom':
+					$hi_roy.element.css( 'height', $hi_roy.height );
+					$hi_roy.element.find('img').css({ 'left': $new_cutout_pos + '%' });
+					break;
+			}
+
+			// Set animate properties for moving back in
+			var $animate2 = {};
+			$animate2[ $hi_roy.nextPosition ] = 0;
+
+			// Move Roy back in
+			$hi_roy.element.animate( $animate2, 800, function() {
+
+				// Enable move
+				$hi_roy_move_disabled = false;
+
+				// Change current position
+				$hi_roy_position = $hi_roy.nextPosition;
+
+				// Change next position
+				$hi_roy.nextPosition = get_random_position();
+
+				// Trigger our move in event, pass position information
+				var $hiRoyAfterMoveIn = new CustomEvent( 'hiRoyAfterMoveIn', {
+					detail: {
+						currentPosition: $hi_roy_position,
+						nextPosition: $hi_roy.nextPosition
+					}
+				});
+				document.body.dispatchEvent($hiRoyAfterMoveIn);
+
+				// Call the callback
+				if ( callback ) {
+					callback();
+				}
+
+			});
+
+		},
+
 		// Move Roy out
 		moveOut: function(callback) {
 
@@ -179,7 +223,9 @@
 				$hi_roy.element.removeClass($hi_roy_position).addClass($hi_roy.nextPosition);
 
 				// Call the callback
-				callback();
+				if (callback) {
+					callback();
+				}
 
 			});
 
@@ -209,48 +255,8 @@
 			// Move Roy out
 			$hi_roy.moveOut(function() {
 
-				// Set new background position
-				// A whole number between 10 and 90
-				var $new_cutout_pos = Math.floor( Math.random() * ( ( 90 - 10 ) + 1 ) + 10 );
-				switch( $hi_roy.nextPosition ) {
-					case 'left':
-					case 'right':
-						$hi_roy.element.css( 'width', $hi_roy.height );
-						$hi_roy.element.find('img').css({ 'top': $new_cutout_pos + '%' });
-						break;
-					case 'top':
-					case 'bottom':
-						$hi_roy.element.css( 'height', $hi_roy.height );
-						$hi_roy.element.find('img').css({ 'left': $new_cutout_pos + '%' });
-						break;
-				}
-
-				// Set animate properties for moving back in
-				var $animate2 = {};
-				$animate2[ $hi_roy.nextPosition ] = 0;
-
 				// Move Roy back in
-				$hi_roy.element.animate( $animate2, 800, function() {
-
-					// Enable move
-					$hi_roy_move_disabled = false;
-
-					// Change current position
-					$hi_roy_position = $hi_roy.nextPosition;
-
-					// Change next position
-					$hi_roy.nextPosition = get_random_position();
-
-					// Trigger our move in event, pass position information
-					var $hiRoyAfterMoveIn = new CustomEvent( 'hiRoyAfterMoveIn', {
-						detail: {
-							currentPosition: $hi_roy_position,
-							nextPosition: $hi_roy.nextPosition
-						}
-					});
-					document.body.dispatchEvent($hiRoyAfterMoveIn);
-
-				} );
+				$hi_roy.moveIn();
 
 			});
 
