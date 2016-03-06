@@ -16,7 +16,7 @@
 
 	// Get random position
 	function get_random_position() {
-		return $hi_roy_sides[ Math.floor( Math.random() * $hi_roy_sides.length ) ];
+		return $hi_roy_sides[ Math.floor( Math.random()*$hi_roy_sides.length ) ];
 	}
 
 	// Let's get ready to say hi
@@ -63,7 +63,7 @@
 		$hi_roy.element.append($hi_roy_element_link);
 
 		// Once the image loads...
-		$hi_roy_element_img.on('load', function(){
+		$hi_roy_element_img.on('load',function(){
 
 			// Place the copy on the site so we can get the height
 			var $hi_roy_element_img_copy = $hi_roy_element_img.clone().css({'position':'absolute','left':'200%','top':'200%'}).appendTo($('body'));
@@ -74,29 +74,15 @@
 			// Remove the copy
 			$hi_roy_element_img_copy.remove();
 
-			// Set Roy's position
-			$hi_roy.element.css( $hi_roy_position, ( 0 - $hi_roy.height ) );
-
-			// Set Roy's height
-			if ( $.inArray( $hi_roy_position, ['top','bottom'] ) >= 0 ) {
-				$hi_roy.element.css( 'height', $hi_roy.height );
-			} else if ( $.inArray( $hi_roy_position, ['left','right'] ) >= 0 ) {
-				$hi_roy.element.css( 'width', $hi_roy.height );
-			}
-
 			// Add our element to the body
 			$element.append($hi_roy.element);
 
-			// Set animation settings to move Roy in
-			var $move_roy_in_animate = {};
-			$move_roy_in_animate[$hi_roy_position] = 0;
-
 			// Move Roy in
-			$hi_roy.moveIn(function() {
+			$hi_roy.moveIn($hi_roy_position,function() {
 
 				// Move Roy cutout when the screen is touched or when the mouse moves
 				if ( $hi_roy.options.onMove ) {
-					$(window).on('touchstart mousemove', function ($event) {
+					$(window).on('touchstart mousemove',function($event) {
 						$hi_roy.move();
 					});
 				}
@@ -140,7 +126,12 @@
 		},
 
 		// Move Roy in
-		moveIn: function(callback) {
+		moveIn: function($position,callback) {
+
+			// Don't move if disabled
+			if ( $hi_roy_move_disabled ) {
+				return false;
+			}
 
 			// Hi Roy
 			var $hi_roy = this;
@@ -148,10 +139,23 @@
 			// Disable while we work
 			$hi_roy_move_disabled = true;
 
+			// Set the position class
+			$hi_roy.element.removeClass($hi_roy_position).addClass($position);
+
+			// Clean up styles
+			$hi_roy.element.removeAttr('style');
+			$hi_roy.element.find('img').removeAttr('style');
+
+			// Place Roy
+			$hi_roy.element.css( $position, (  - $hi_roy.height ) );
+
+			// Change current position
+			$hi_roy_position = $position;
+
 			// Set new background position
 			// A whole number between 10 and 90
-			var $new_cutout_pos = Math.floor( Math.random() * ( ( 90 - 10 ) + 1 ) + 10 );
-			switch( $hi_roy.nextPosition ) {
+			var $new_cutout_pos = Math.floor( Math.random() * ((90 - 10) + 1 ) + 10 );
+			switch($hi_roy_position) {
 				case 'left':
 				case 'right':
 					$hi_roy.element.css( 'width', $hi_roy.height );
@@ -165,32 +169,25 @@
 			}
 
 			// Set animate properties for moving back in
-			var $animate2 = {};
-			$animate2[ $hi_roy.nextPosition ] = 0;
+			var $animate = {};
+			$animate[$hi_roy_position] = 0;
 
-			// Move Roy back in
-			$hi_roy.element.animate( $animate2, 800, function() {
+			// Move Roy in
+			$hi_roy.element.show().animate($animate,800,function() {
 
 				// Enable move
 				$hi_roy_move_disabled = false;
 
-				// Change current position
-				$hi_roy_position = $hi_roy.nextPosition;
-
-				// Change next position
-				$hi_roy.nextPosition = get_random_position();
-
 				// Trigger our move in event, pass position information
 				var $hiRoyAfterMoveIn = new CustomEvent( 'hiRoyAfterMoveIn', {
 					detail: {
-						currentPosition: $hi_roy_position,
-						nextPosition: $hi_roy.nextPosition
+						position: $hi_roy_position
 					}
 				});
 				document.body.dispatchEvent($hiRoyAfterMoveIn);
 
 				// Call the callback
-				if ( callback ) {
+				if (callback) {
 					callback();
 				}
 
@@ -201,6 +198,11 @@
 		// Move Roy out
 		moveOut: function(callback) {
 
+			// Don't move if disabled
+			if ($hi_roy_move_disabled) {
+				return false;
+			}
+
 			// Hi Roy
 			var $hi_roy = this;
 
@@ -208,11 +210,14 @@
 			$hi_roy_move_disabled = true;
 
 			// Set animate properties for moving out
-			var $animate1 = {};
-			$animate1[$hi_roy_position] = 0 - $hi_roy.height;
+			var $animate = {};
+			$animate[$hi_roy_position] = 0 - $hi_roy.height;
 
 			// Move Roy out
-			$hi_roy.element.animate( $animate1, 800, function() {
+			$hi_roy.element.animate($animate, 800, function() {
+
+				// Hide Roy
+				$hi_roy.element.hide();
 
 				// Enable move
 				$hi_roy_move_disabled = false;
@@ -220,21 +225,10 @@
 				// Trigger our move out event, pass position information
 				var $hiRoyAfterMoveOut = new CustomEvent( 'hiRoyAfterMoveOut', {
 					detail: {
-						currentPosition: $hi_roy_position,
-						nextPosition: $hi_roy.nextPosition
+						position: $hi_roy_position
 					}
 				});
 				document.body.dispatchEvent($hiRoyAfterMoveOut);
-
-				// Clean up styles
-				$hi_roy.element.removeAttr( 'style' );
-				$hi_roy.element.find('img').removeAttr( 'style' );
-
-				// Set the position
-				$hi_roy.element.css( $hi_roy.nextPosition, ( 0 - $hi_roy.height ) );
-
-				// Switch out the position class
-				$hi_roy.element.removeClass($hi_roy_position).addClass($hi_roy.nextPosition);
 
 				// Call the callback
 				if (callback) {
@@ -246,28 +240,30 @@
 		},
 
 		// Move Roy
-		move: function($next_position) {
-
-			// Hi Roy
-			var $hi_roy = this;
+		move: function($position) {
 
 			// Don't move if disabled
 			if ( $hi_roy_disabled || $hi_roy_move_disabled ) {
 				return false;
 			}
 
+			// Hi Roy
+			var $hi_roy = this;
+
+			// Set next position
+			var $next_position = $position;
+
 			// Make sure we have a valid next position
-			if ( $next_position === undefined || $.inArray( $next_position, $hi_roy_sides ) == -1 ) {
-				if ( $hi_roy.nextPosition === undefined || $.inArray( $hi_roy.nextPosition, $hi_roy_sides ) == -1 ) {
-					$hi_roy.nextPosition = get_random_position();
-				}
+			// If not passed, will select one at random
+			if ( $next_position === undefined || $.inArray($next_position, $hi_roy_sides ) == -1 ) {
+				$next_position = get_random_position();
 			}
 
 			// Move Roy out
 			$hi_roy.moveOut(function() {
 
 				// Move Roy back in
-				$hi_roy.moveIn();
+				$hi_roy.moveIn($next_position);
 
 			});
 
@@ -278,7 +274,7 @@
 	// Let's get Roy all setup
 	// @TODO Can we "chain" and still return the object?
 	$.fn.hiRoy = function($options) {
-		//return this.each( function() {
+		//return this.each(function() {
 			if ( ! $.data( this, 'hi-roy' ) ) {
 				var $new_hi_roy = new hiRoy(this,$options);
 				$.data( this, 'hi-roy', $new_hi_roy );
