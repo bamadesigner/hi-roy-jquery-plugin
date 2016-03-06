@@ -140,6 +140,9 @@
 			// Hi Roy
 			var $hi_roy = this;
 
+			// Disable while we work
+			$hi_roy_move_disabled = true;
+
 			// Set new background position
 			// A whole number between 10 and 90
 			var $new_cutout_pos = Math.floor( Math.random() * ( ( 90 - 10 ) + 1 ) + 10 );
@@ -196,12 +199,18 @@
 			// Hi Roy
 			var $hi_roy = this;
 
+			// Disable while we work
+			$hi_roy_move_disabled = true;
+
 			// Set animate properties for moving out
 			var $animate1 = {};
 			$animate1[$hi_roy_position] = 0 - $hi_roy.height;
 
 			// Move Roy out
 			$hi_roy.element.animate( $animate1, 800, function() {
+
+				// Enable move
+				$hi_roy_move_disabled = false;
 
 				// Trigger our move out event, pass position information
 				var $hiRoyAfterMoveOut = new CustomEvent( 'hiRoyAfterMoveOut', {
@@ -241,9 +250,6 @@
 			if ( $hi_roy_disabled || $hi_roy_move_disabled ) {
 				return false;
 			}
-
-			// Disable while we work
-			$hi_roy_move_disabled = true;
 
 			// Make sure we have a valid next position
 			if ( $next_position === undefined || $.inArray( $next_position, $hi_roy_sides ) == -1 ) {
