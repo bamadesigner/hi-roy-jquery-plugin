@@ -8,10 +8,11 @@ By simply placing this plugin on your website, you too can ensure your membershi
 
 ## To Get Started
 
-Place the JS and CSS file on your site:
+Add the hi-roy-min.js, hi-roy-styles.css, and roy-head.png file to your site and add the following to the <head> section of your site. Hi Roy is a jQuery plugin so you will need to make sure you include jQuery.
 
 ```
 <link rel="stylesheet" href="hi-roy-styles.css" type="text/css" media="all" />
+<script type="text/javascript" src="//code.jquery.com/jquery-2.2.1.min.js"></script>
 <script type="text/javascript" src="hi-roy-min.js"></script>
 ```
 
