@@ -41,6 +41,7 @@ You can customize Roy by tweaking a few options:
 * image: Is the relative path to the cutout of Roy's head. You can place a different path if you'd like to use a different image.
 * link: Defines the link used when you click on Roy's head. By default, it's a Twitter web intent to tweet "Hi Roy".
 * link_target: Defines the target for the link. The default is '_blank', to open in a new window.
+* moveOnStart: If true, will move Roy into the screen immediately. Set to false if you want to move him in later.
 * moveOnMove: If true, will move Roy's head when the user's mouse moves. Set true to disable this so you can move Roy on your own terms.
 
 ### How To Customize Roy
