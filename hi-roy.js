@@ -41,6 +41,11 @@
 		$hi_roy_position = $hi_roy.options.startPosition;
 		delete $hi_roy.options.startPosition;
 
+		// Make sure we don't already have an element
+		if ( $('#hi-roy').length > 0 ) {
+			$('#hi-roy').remove();
+		}
+
 		// Create and store our new Hi Roy element
 		$hi_roy.element = $('<div id="hi-roy"></div>').addClass($hi_roy_position).hide();
 
