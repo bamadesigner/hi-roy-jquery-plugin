@@ -124,6 +124,20 @@
 			$hi_roy_disabled = false;
 		},
 
+		// Disable Roy from moving
+		disableMove: function() {
+			$hi_roy_move_disabled = true;
+		},
+
+		// Enable Roy from moving
+		enableMove: function() {
+			$hi_roy_move_disabled = false;
+		},
+
+		// Destroy Roy
+		destroy: function() {
+			this.element.remove();
+			this.disable();
 		},
 
 		// Move Roy
@@ -133,7 +147,7 @@
 			var $hi_roy = this;
 
 			// Don't move if disabled
-			if ( $hi_roy_move_disabled ) {
+			if ( $hi_roy_disabled || $hi_roy_move_disabled ) {
 				return false;
 			}
 
