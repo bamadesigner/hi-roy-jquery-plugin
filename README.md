@@ -27,8 +27,9 @@ Add the following to the <head> section of your site. Hi Roy is a jQuery plugin 
 ```
 
 ```
-// Initiate Roy with Javascript
-var $hi_roy = $(document).hiRoy();
+// Initiate Roy with the element you want to add Roy to
+// This way you can contain Roy inside a specific element
+var $hi_roy = $('body').hiRoy();
 ```
 
 ## Options
@@ -44,7 +45,7 @@ You can customize Roy by tweaking a few options:
 ### How To Customize Roy
 
 ```
-var $hi_roy = $(document).hiRoy({
+var $hi_roy = $('body').hiRoy({
     startPosition: 'top', // Do this if you always want Roy to start at the top
     onMove: false // Disable Roy moving when the mouse moves
 });
@@ -53,7 +54,7 @@ var $hi_roy = $(document).hiRoy({
 ### How To Use Your Own Image
 
 ```
-var $hi_roy = $(document).hiRoy({
+var $hi_roy = $('body').hiRoy({
     image: 'images/hi-rachel.png' // Include a relative path
 });
 ```

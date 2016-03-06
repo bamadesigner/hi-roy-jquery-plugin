@@ -74,7 +74,7 @@
 			}
 
 			// Add our element to the body
-			$('body').append($hi_roy.element);
+			$element.append($hi_roy.element);
 
 			// Set animation settings to move Roy in
 			var $move_roy_in_animate = {};
