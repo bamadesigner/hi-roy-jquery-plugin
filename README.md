@@ -6,9 +6,15 @@ By simply placing this plugin on your website, you too can ensure your membershi
 
 ![Have you said hi Roy today?](https://raw.githubusercontent.com/bamadesigner/hi-roy/master/hi-roy-screencast.gif)
 
-## To Get Started
+## Getting Started
 
-Add the hi-roy-min.js, hi-roy-styles.css, and roy-head.png file to your site and add the following to the <head> section of your site. Hi Roy is a jQuery plugin so you will need to make sure you include jQuery.
+Take the following files from the repo and add them to your site:
+
+* hi-roy-min.js
+* hi-roy-styles.css
+* roy-head.png file *You can use your own image instead of Roy's head. See options below.*
+
+Add the following to the <head> section of your site. Hi Roy is a jQuery plugin so you will need to make sure you include jQuery. For this example, I'm pulling from the official jQuery CDN.
 
 ```
 <link rel="stylesheet" href="hi-roy-styles.css" type="text/css" media="all" />
@@ -17,24 +23,38 @@ Add the hi-roy-min.js, hi-roy-styles.css, and roy-head.png file to your site and
 ```
 
 ```
-// Initiate Roy in JS
+// Initiate Roy with Javascript
 var $hi_roy = $(document).hiRoy();
 ```
 
-```
-// You can also tweak a few options
-// The default options:
+## Options
+
+You can customize Roy by tweaking a few options:
+
+**The default options:**
 *startPosition: Will pull a random position to place Roy at the start ('top', 'right', 'bottom', 'left').
 *image: Is the relative path to the cutout of Roy's head. You can place a different path if you'd like to use a different image.
 *link: Defines the link used when you click on Roy's head. By default, it's a Twitter web intent to tweet "Hi Roy".
 *onMove: If true, will move Roy's head when the user's mouse moves. Set true to disable this so you can move Roy on your own terms.
 
-// To change the options:
+### How To Customize Roy
+
+```
 var $hi_roy = $(document).hiRoy({
     startPosition: 'top', // Do this if you always want Roy to start at the top
     onMove: false // Disable Roy moving when the mouse moves
 });
 ```
+
+### How To Use Your Own Image
+
+```
+var $hi_roy = $(document).hiRoy({
+    image: 'images/hi-rachel.png' // Include a relative path
+});
+```
+
+### "Listen" To Roy
 
 ```
 // You can add a listener so you can take action when Roy moves in to the screen
