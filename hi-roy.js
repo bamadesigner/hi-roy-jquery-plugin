@@ -20,7 +20,7 @@
 	}
 
 	// Let's get ready to say hi
-	function hiRoy($element,$options) {
+	function hiRoy($element,$options,$callback) {
 
 		// Hi Roy
 		var $hi_roy = this;
@@ -95,7 +95,19 @@
 						});
 					}
 
+					// Call callback
+					if ( $callback ) {
+						$callback();
+					}
+
 				});
+
+			} else {
+
+				// Call callback
+				if ( $callback ) {
+					$callback();
+				}
 
 			}
 
@@ -283,10 +295,10 @@
 	
 	// Let's get Roy all setup
 	// @TODO Can we "chain" and still return the object?
-	$.fn.hiRoy = function($options) {
+	$.fn.hiRoy = function($options,$callback) {
 		//return this.each(function() {
 			if ( ! $.data( this, 'hi-roy' ) ) {
-				var $new_hi_roy = new hiRoy(this,$options);
+				var $new_hi_roy = new hiRoy(this,$options,$callback);
 				$.data( this, 'hi-roy', $new_hi_roy );
 				return $new_hi_roy;
 			}
