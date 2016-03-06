@@ -146,26 +146,11 @@
 			this.disable();
 		},
 
-		// Move Roy
-		move: function($next_position) {
+		// Move Roy out
+		moveOut: function(callback) {
 
-			// Define this
+			// Hi Roy
 			var $hi_roy = this;
-
-			// Don't move if disabled
-			if ( $hi_roy_disabled || $hi_roy_move_disabled ) {
-				return false;
-			}
-
-			// Disable while we work
-			$hi_roy_move_disabled = true;
-
-			// Make sure we have a valid next position
-			if ( $next_position === undefined || $.inArray( $next_position, $hi_roy_sides ) == -1 ) {
-				if ( $hi_roy.nextPosition === undefined || $.inArray( $hi_roy.nextPosition, $hi_roy_sides ) == -1 ) {
-					$hi_roy.nextPosition = get_random_position();
-				}
-			}
 
 			// Set animate properties for moving out
 			var $animate1 = {};
@@ -192,6 +177,37 @@
 
 				// Switch out the position class
 				$hi_roy.element.removeClass($hi_roy_position).addClass($hi_roy.nextPosition);
+
+				// Call the callback
+				callback();
+
+			});
+
+		},
+
+		// Move Roy
+		move: function($next_position) {
+
+			// Hi Roy
+			var $hi_roy = this;
+
+			// Don't move if disabled
+			if ( $hi_roy_disabled || $hi_roy_move_disabled ) {
+				return false;
+			}
+
+			// Disable while we work
+			$hi_roy_move_disabled = true;
+
+			// Make sure we have a valid next position
+			if ( $next_position === undefined || $.inArray( $next_position, $hi_roy_sides ) == -1 ) {
+				if ( $hi_roy.nextPosition === undefined || $.inArray( $hi_roy.nextPosition, $hi_roy_sides ) == -1 ) {
+					$hi_roy.nextPosition = get_random_position();
+				}
+			}
+
+			// Move Roy out
+			$hi_roy.moveOut(function() {
 
 				// Set new background position
 				// A whole number between 10 and 90
