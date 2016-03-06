@@ -8,6 +8,10 @@ By simply placing this plugin on your website, you too can ensure your membershi
 
 ## Getting Started
 
+Hi Roy is a simple jQuery plugin that, by default, places Roy on your website and makes him move from side to side when you move your mouse. If you happen to catch Roy, you can click his head greet him on this beautiful day.
+
+You can also customize the plugin to modify Roy's behavior.
+
 Take the following files from the repo and add them to your site:
 
 * hi-roy-min.js
