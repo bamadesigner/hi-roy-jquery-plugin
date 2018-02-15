@@ -14,16 +14,16 @@ You can also customize the plugin to modify Roy's behavior.
 
 Take the following files from the repo and add them to your site:
 
-* hi-roy-min.js
-* hi-roy-styles.css
+* hi-roy.min.js
+* hi-roy.min.css
 * roy-head.png file - *(You can use your own image instead of Roy's head. [See options below](https://github.com/bamadesigner/hi-roy#how-to-use-your-own-image))*
 
 Add the following to the `<head>` of your site. Hi Roy is a jQuery plugin so you will need to make sure you include jQuery. For this example, I'm pulling from the official jQuery CDN.
 
 ```
-<link rel="stylesheet" href="hi-roy-styles.css" type="text/css" media="all" />
+<link rel="stylesheet" href="hi-roy.min.css" type="text/css" media="all" />
 <script type="text/javascript" src="//code.jquery.com/jquery-2.2.1.min.js"></script>
-<script type="text/javascript" src="hi-roy-min.js"></script>
+<script type="text/javascript" src="hi-roy.min.js"></script>
 ```
 
 ```

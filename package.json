@@ -2,7 +2,16 @@
   "name": "hi-roy",
   "version": "1.0.0",
   "description": "A jQuery plugin that allows you to place Roy on your site so that you never forget to say hi Roy again.",
-  "keywords": ["hi","roy","hi roy","javascript","plugin","jquery","jquery-plugin","ecosystem:jquery"],
+  "keywords": [
+    "hi",
+    "roy",
+    "hi roy",
+    "javascript",
+    "plugin",
+    "jquery",
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
   "author": "Rachel Carden (https://bamadesigner.com/)",
   "license": "MIT",
   "repository": {
@@ -11,8 +20,11 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-merge-media-queries": "^0.2.1",
     "gulp-minify": "0.0.5",
-    "gulp-sass": "^2.2.0",
-    "gulp-watch": "^4.3.5"
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0"
   }
 }
