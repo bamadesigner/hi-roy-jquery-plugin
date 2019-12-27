@@ -2,7 +2,7 @@
  * Hi Roy
  * Version 1.0.0
  * A simple and easy jQuery plugin for CSS animated page transitions.
- * https://github.com/bamadesigner/hi-roy
+ * https://github.com/bamadesigner/hi-roy-jquery-plugin
  * License: MIT
  * Author: Rachel Cherry (https://bamadesigner.com/)
  */
