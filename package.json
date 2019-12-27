@@ -18,13 +18,14 @@
     "type": "git",
     "url": "https://github.com/bamadesigner/hi-roy.git"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.1.0",
-    "gulp-clean-css": "^3.9.2",
-    "gulp-merge-media-queries": "^0.2.1",
-    "gulp-minify": "0.0.5",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.2.0"
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-rename": "^2.0.0"
   }
 }
