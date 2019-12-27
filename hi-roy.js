@@ -4,7 +4,7 @@
  * A simple and easy jQuery plugin for CSS animated page transitions.
  * https://github.com/bamadesigner/hi-roy
  * License: MIT
- * Author: Rachel Carden (https://bamadesigner.com/)
+ * Author: Rachel Cherry (https://bamadesigner.com/)
  */
 (function($) {
 
